@@ -24,7 +24,7 @@ export const registerUser = async (req, res) => {
             name,
             email,
             password: hashedPassword,
-            role,
+            role: role || 'buyer' // default to buyer if not provided change later
         });
 
         //send token
@@ -76,6 +76,7 @@ export const loginUser = async (req, res) => {
                 email: user.email,
                 role: user.role,
             },
+            token,
         });
     }catch (error){
         console.error(error);
